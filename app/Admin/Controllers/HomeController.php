@@ -4,7 +4,6 @@ namespace App\Admin\Controllers;
 
 use App\Http\Controllers\Controller;
 use Tanmo\Admin\Controllers\Main;
-
 /**
  * @module 管理后台
  *
