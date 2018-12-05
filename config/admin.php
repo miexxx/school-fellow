@@ -10,7 +10,7 @@ return [
     /**
      * 项目名
      */
-    'name' => '管理后台',
+    'name' => '校友会管理后台',
 
     /*
      * Logo
@@ -40,12 +40,12 @@ return [
     /**
      * 默认标题
      */
-    'header' => '标题',
+    'header' => '校友会',
 
     /**
      * 默认描述
      */
-    'description' => '描述...',
+    'description' => '校友会后台管理',
 
     /*
      * Use `https`.

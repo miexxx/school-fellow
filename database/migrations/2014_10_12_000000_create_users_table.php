@@ -18,9 +18,9 @@ class CreateUsersTable extends Migration
             $table->string('nickname',20);
             $table->unsignedInteger('gender');
             $table->string('city',20);
-            $table->string('wechat',50);
+            $table->string('wechat',50)->nullable();
             $table->string('avatarurl',255);
-            $table->string('mobile',22);
+            $table->string('mobile',22)->nullable();
             $table->index('gender');
             $table->index('mobile');
             $table->timestamps();

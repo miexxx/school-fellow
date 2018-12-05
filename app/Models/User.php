@@ -5,9 +5,20 @@ namespace App\Models;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
+use Tanmo\Search\Traits\Search;
 class User extends Authenticatable implements JWTSubject
 {
-    use Notifiable;
+    use Notifiable,Search;
+    const PAGINATE = 10;
+    private $sex=[
+        '1'=>'男',
+        '2'=>'女'
+    ];
+
+    public function getGenderAttribute($value)
+    {
+        return $this->sex[$value];
+    }
 
     /**
      * The attributes that are mass assignable.
@@ -15,6 +26,10 @@ class User extends Authenticatable implements JWTSubject
      * @var array
      */
     protected $guarded=[];
+
+    public function openId(){
+        return $this->hasOne(UserAuthWechat::class);
+    }
 
     /**
      * Get the identifier that will be stored in the subject claim of the JWT.
