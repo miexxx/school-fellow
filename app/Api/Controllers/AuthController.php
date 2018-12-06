@@ -23,16 +23,16 @@ class AuthController extends Controller
     }
     public function login(){
         $config = [
-//            'app_id' => 'wx43c66e8ce3d9b082',
-//            'secret' => '3b20951f94d556626a1342f3a8e79e63',
+            'app_id' => 'wx43c66e8ce3d9b082',
+            'secret' => '3b20951f94d556626a1342f3a8e79e63',
 //
-            'app_id' => 'wx9bec3d0bf6ecc0d7',
-            'secret' => '29502aca9d39ff4f6ca15376447b55ed',
+//            'app_id' => 'wx9bec3d0bf6ecc0d7',
+//            'secret' => '29502aca9d39ff4f6ca15376447b55ed',
 
             // 下面为可选项
             // 指定 API 调用返回结果的类型：array(default)/collection/object/raw/自定义类名
             'response_type' => 'array',
-            
+
         ];
         $code = request('code');
         $iv = request('iv');
