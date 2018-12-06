@@ -32,7 +32,11 @@
                         <div class="form-group">
                             <div class="form-group">
                                 <label>审核状态</label>
-                                <input type="text" class="form-control" placeholder="审核状态" name="status" value="{{ request('status') }}">
+                                <select name="status" class="form-control">
+                                    <option value="" selected></option>
+                                    <option value="0">审核中</option>
+                                    <option value="1">审核通过</option>
+                                </select>
                             </div>
                         </div>
                         <div class="form-group">

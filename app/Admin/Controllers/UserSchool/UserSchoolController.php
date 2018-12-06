@@ -31,10 +31,23 @@ class UserSchoolController extends Controller
         $searcher = Search::build(function (Searcher $searcher) {
             $searcher->equal('status');
             $searcher->like('name');
+            $searcher->like('user.nickname','nickname');
+            $searcher->like('user.mobile','mobile');
             $searcher->between('created_at');
         });
         $header = "校友认证申请列表";
         $userSchools = (new UserSchool())->search($searcher)->orderBy('status','asc')->orderBy('created_at','desc')->paginate(ResultTool::PAGINATE);
         return view('admin::userSchool.usersSchool',compact('userSchools','header'));
+    }
+
+    public function success(UserSchool $userSchool){
+        $userSchool->status =  UserSchool::SUCCESS;
+        $userSchool->save();
+        return ResultTool::swlMessage(ResultTool::SUCCESS,'操作成功');
+    }
+
+    public function reject(UserSchool $userSchool){
+        $userSchool->delete();
+        return ResultTool::swlMessage(ResultTool::SUCCESS,'操作成功');
     }
 }

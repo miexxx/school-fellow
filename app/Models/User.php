@@ -34,6 +34,10 @@ class User extends Authenticatable implements JWTSubject
         return $this->hasOne(UserSchool::class);
     }
 
+    public function userCompany(){
+        return $this->hasOne(UserCompany::class);
+    }
+
 
     /**
      * Get the identifier that will be stored in the subject claim of the JWT.

@@ -25,6 +25,7 @@
                             <th>学校名称</th>
                             <th>申请时间</th>
                             <th>联系方式</th>
+                            <th>状态</th>
                             <th>审核</th>
                         </tr>
                         @foreach($userSchools as $userSchool)
@@ -38,11 +39,19 @@
                                 <td><span class="label label-info">{{$userSchool->major}}</span></td>
                                 <td><span class="label label-info">{{$userSchool->school_name}}</span></td>
                                 <td>{{ $userSchool->created_at }}</td>
-                                <td><span class="label label-danger">{{ $userSchool->user->mobile }}</span></td>
+                                <td><span class="label label-default">Mobile :</span><span class="label label-danger">{{ $userSchool->user->mobile }}</span></td>
+                                <td>@if($userSchool->status =="未审核")<span class="label label-warning">@else<span class="label label-success">@endif{{ $userSchool->status }}</span></td>
                                 <td>
                                     @if($userSchool->status =="未审核")
-                                        <a href="javascript:void(0);" data-id="{{ $userSchool->id }}" class="grid-row-delete btn btn-danger btn-sm" role="button">
-                                            点击通过
+                                        <a href="javascript:void(0);" data-id="{{ $userSchool->id }}" class="grid-row-success btn btn-info btn-sm" role="button">
+                                            同意
+                                        </a>
+                                        <a href="javascript:void(0);" data-id="{{ $userSchool->id }}" class="grid-row-reject btn btn-danger btn-sm" role="button">
+                                            拒接
+                                        </a>
+                                    @else
+                                        <a href="javascript:void(0);" data-id="{{ $userSchool->id }}" class="grid-row-reject btn btn-danger btn-sm" role="button">
+                                            拒接
                                         </a>
                                     @endif
                                 </td>
@@ -60,5 +69,6 @@
 @endsection
 
 @section('script')
-    @include('admin::js.grid-row-delete', ['url' => route('admin::userSchools.index')])
+    @include('admin::js.grid-row-reject', ['url' => route('admin::userSchools.index')])
+    @include('admin::js.grid-row-success', ['url' => route('admin::userSchools.index')])
 @endsection

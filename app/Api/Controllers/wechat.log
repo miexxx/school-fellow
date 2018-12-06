@@ -1262,3 +1262,67 @@ Content-Length: 82
 {"session_key":"iS8MuvZP2r5SJaRzhnrRUA==","openid":"oMRkQ5ewGYsKcZHjPzDumZz7UdpE"}
 --------
 NULL  
+[2018-12-06 07:51:19] NULL.INFO: >>>>>>>>
+GET /sns/jscode2session?access_token=16_mzrhY2umxQTW1_l7oCqq0pmmLDi-OnSeX9yqPlXvljwBFKyPIuElA0K7KMLyAYIbxaYNOWgd3iJfYDVtDTxye4EzQEJVsKPWlIsG2NU3LInGRNB4AHmZ7favoNgMUCiACAQYG&appid=wx9bec3d0bf6ecc0d7&secret=29502aca9d39ff4f6ca15376447b55ed&js_code=061iQ7Ks1mAYzm0guWGs1fnIJs1iQ7KZ&grant_type=authorization_code HTTP/1.1
+Host: api.weixin.qq.com
+User-Agent: GuzzleHttp/6.3.3 curl/7.58.0 PHP/7.2.5-1+ubuntu18.04.1+deb.sury.org+1
+
+
+<<<<<<<<
+HTTP/1.1 200 OK
+Connection: keep-alive
+Content-Type: text/plain
+Date: Thu, 06 Dec 2018 07:51:19 GMT
+Content-Length: 82
+
+{"session_key":"ngBckg9vf6PGFeWzkZ9JFw==","openid":"oMRkQ5ewGYsKcZHjPzDumZz7UdpE"}
+--------
+NULL  
+[2018-12-06 07:51:19] NULL.INFO: >>>>>>>>
+GET /sns/jscode2session?access_token=16_AY4eQRBnzmA2Ml9OoCqq0pmmLDi-OnSeX9yqPlXvljwBFKyPIuElA0K7KMKAW7VlmwL5z42FPZ9E8y_qbW42yuTjdMZYFSqrRsnyS1bModg9C2K8hqwY16wRuYgHRLiACASCW&appid=wx9bec3d0bf6ecc0d7&secret=29502aca9d39ff4f6ca15376447b55ed&js_code=021DFV9b05Gguz1tcOcb0GA8ab0DFV9X&grant_type=authorization_code HTTP/1.1
+Host: api.weixin.qq.com
+User-Agent: GuzzleHttp/6.3.3 curl/7.58.0 PHP/7.2.5-1+ubuntu18.04.1+deb.sury.org+1
+
+
+<<<<<<<<
+HTTP/1.1 200 OK
+Connection: keep-alive
+Content-Type: text/plain
+Date: Thu, 06 Dec 2018 07:51:19 GMT
+Content-Length: 82
+
+{"session_key":"ngBckg9vf6PGFeWzkZ9JFw==","openid":"oMRkQ5ewGYsKcZHjPzDumZz7UdpE"}
+--------
+NULL  
+[2018-12-06 08:12:21] NULL.INFO: >>>>>>>>
+GET /sns/jscode2session?access_token=16_AY4eQRBnzmA2Ml9OoCqq0pmmLDi-OnSeX9yqPlXvljwBFKyPIuElA0K7KMKAW7VlmwL5z42FPZ9E8y_qbW42yuTjdMZYFSqrRsnyS1bModg9C2K8hqwY16wRuYgHRLiACASCW&appid=wx9bec3d0bf6ecc0d7&secret=29502aca9d39ff4f6ca15376447b55ed&js_code=061swoz81rYLtN1u4LA81Eljz81swozU&grant_type=authorization_code HTTP/1.1
+Host: api.weixin.qq.com
+User-Agent: GuzzleHttp/6.3.3 curl/7.58.0 PHP/7.2.5-1+ubuntu18.04.1+deb.sury.org+1
+
+
+<<<<<<<<
+HTTP/1.1 200 OK
+Connection: keep-alive
+Content-Type: text/plain
+Date: Thu, 06 Dec 2018 08:12:20 GMT
+Content-Length: 82
+
+{"session_key":"HyMT13xgDP6ZXJM3KAGvLA==","openid":"oMRkQ5ewGYsKcZHjPzDumZz7UdpE"}
+--------
+NULL  
+[2018-12-06 08:12:21] NULL.INFO: >>>>>>>>
+GET /sns/jscode2session?access_token=16_AY4eQRBnzmA2Ml9OoCqq0pmmLDi-OnSeX9yqPlXvljwBFKyPIuElA0K7KMKAW7VlmwL5z42FPZ9E8y_qbW42yuTjdMZYFSqrRsnyS1bModg9C2K8hqwY16wRuYgHRLiACASCW&appid=wx9bec3d0bf6ecc0d7&secret=29502aca9d39ff4f6ca15376447b55ed&js_code=001pYCnA1IxA7c04O3qA1YxdnA1pYCnz&grant_type=authorization_code HTTP/1.1
+Host: api.weixin.qq.com
+User-Agent: GuzzleHttp/6.3.3 curl/7.58.0 PHP/7.2.5-1+ubuntu18.04.1+deb.sury.org+1
+
+
+<<<<<<<<
+HTTP/1.1 200 OK
+Connection: keep-alive
+Content-Type: text/plain
+Date: Thu, 06 Dec 2018 08:12:21 GMT
+Content-Length: 82
+
+{"session_key":"HyMT13xgDP6ZXJM3KAGvLA==","openid":"oMRkQ5ewGYsKcZHjPzDumZz7UdpE"}
+--------
+NULL  

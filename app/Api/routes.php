@@ -13,5 +13,6 @@ Route::group([
         'middleware'=>['auth:api']
     ],function(){
         Route::post('api/attestation','SchoolAttController@attestation');
+        Route::post('api/company','CompanyController@store');
     });
 });

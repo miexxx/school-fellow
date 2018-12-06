@@ -20,6 +20,8 @@ Route::group([
         'namespace'=>'UserSchool'
     ],function(){
         Route::resource('userSchools','UserSchoolController');
+        Route::post('userSchools/success/{userSchool}','UserSchoolController@success');
+        Route::post('userSchools/reject/{userSchool}','UserSchoolController@reject');
     });
 
 

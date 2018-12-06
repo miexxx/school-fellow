@@ -11,21 +11,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Tanmo\Search\Traits\Search;
-class UserSchool extends Model
+class UserCompany extends Model
 {
     use Search;
     protected $guarded=[];
-    protected $status=[
-        '0'=>'未审核',
-        '1'=>'审核通过'
-    ];
-    const SUCCESS = 1;
+    protected $table='user_companys';
     public function user(){
         return $this->belongsTo(User::class);
-    }
-
-    public function getStatusAttribute($value)
-    {
-        return $this->status[$value];
     }
 }
