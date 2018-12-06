@@ -15,4 +15,12 @@ Route::group([
     ],function(){
         Route::resource('members','UserController');
     });
+
+    Route::group([
+        'namespace'=>'UserSchool'
+    ],function(){
+        Route::resource('userSchools','UserSchoolController');
+    });
+
+
 });

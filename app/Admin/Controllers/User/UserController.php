@@ -7,6 +7,7 @@
  */
 namespace App\Admin\Controllers\User;
 
+use App\Api\Tool\ResultTool;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Tanmo\Search\Facades\Search;
@@ -31,15 +32,17 @@ class UserController extends Controller
             $searcher->like('wechat');
             $searcher->between('created_at');
         });
-        $users =(new User)->search($searcher)->orderBy('created_at','desc')->paginate(User::PAGINATE);
+        $users =(new User)->search($searcher)->orderBy('created_at','desc')->paginate(ResultTool::PAGINATE);
         $header = "会员列表";
         return view('admin::users.users',compact('users','header'));
     }
 
 
     public function destroy($id){
-        User::find($id)->delete();
-        return response()->json(['status' => 1, 'message' =>'删除成功']);
+        $user = User::find($id);
+        $user->openId->delete();
+        $user->delete();
+        return ResultTool::swlMessage(1,'删除成功');
     }
 
 }

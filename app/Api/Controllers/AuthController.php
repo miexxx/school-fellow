@@ -11,8 +11,10 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\UserAuthWechat;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use EasyWeChat\Factory;
+use App\Api\Tool\ResultTool;
 class AuthController extends Controller
 {
     public function __construct()
@@ -21,8 +23,8 @@ class AuthController extends Controller
     }
     public function login(){
         $config = [
-            'app_id' => 'wx43c66e8ce3d9b082',
-            'secret' => '3b20951f94d556626a1342f3a8e79e63',
+            'app_id' => 'wx9bec3d0bf6ecc0d7',
+            'secret' => '29502aca9d39ff4f6ca15376447b55ed',
 
             // 下面为可选项
             // 指定 API 调用返回结果的类型：array(default)/collection/object/raw/自定义类名
@@ -34,20 +36,25 @@ class AuthController extends Controller
             ],
         ];
         $code = request('code');
+        $iv = request('iv');
+        $encryptData = request('encrypted_data');
         $app = Factory::miniProgram($config);
-        $userInfo = $app->auth->session($code);
+        $session = $app->auth->session($code);
+        $userInfo = $app->encryptor->decryptData($session['session_key'], $iv, $encryptData);
         $auth =(new UserAuthWechat())->getByOpenId($userInfo['openId']);
         if(!$auth){
             /// 未注册
+            DB::beginTransaction();
             $user = new User();
             $user->avatarUrl = $userInfo['avatarUrl'];
             $user->nickname = $userInfo['nickName'];
             $user->gender = $userInfo['gender'];
-            $user->city = $userInfo['city'].$userInfo['province'].$userInfo['country'];
+            $user->city = $userInfo['country'].$userInfo['province'].$userInfo['city'];
             $user->save();
 
             $authWechat = new UserAuthWechat(['open_id' => $userInfo['openId']]);
-            $user->authWechat()->save($authWechat);
+            $user->openId()->save($authWechat);
+            DB::commit();
         }
         else{
             $user = $auth->user;
@@ -63,8 +70,7 @@ class AuthController extends Controller
      */
     public function refresh()
     {
-        $user = auth('api')->user();
-        return api()->item($user, UserResource::class)->setMeta($this->respondWithToken(auth()->refresh()));
+        return ResultTool::apiArrayMessage(ResultTool::SUCCESS,$this->respondWithToken(auth('api')->refresh()));
     }
 
     /**
@@ -73,15 +79,15 @@ class AuthController extends Controller
     public function logout()
     {
         auth()->logout();
-        return api()->accepted();
+        return ResultTool::apiMessage(ResultTool::SUCCESS);
     }
 
     protected function respondWithToken($token)
     {
-        return response()->json([
+        return [
             'access_token' => $token,
             'token_type' => 'bearer',
             'expires_in' => auth('api')->factory()->getTTL() * 60
-        ]);
+        ];
     }
 }

@@ -9,7 +9,6 @@ use Tanmo\Search\Traits\Search;
 class User extends Authenticatable implements JWTSubject
 {
     use Notifiable,Search;
-    const PAGINATE = 10;
     private $sex=[
         '1'=>'男',
         '2'=>'女'
@@ -30,6 +29,11 @@ class User extends Authenticatable implements JWTSubject
     public function openId(){
         return $this->hasOne(UserAuthWechat::class);
     }
+
+    public function userSchool(){
+        return $this->hasOne(UserSchool::class);
+    }
+
 
     /**
      * Get the identifier that will be stored in the subject claim of the JWT.

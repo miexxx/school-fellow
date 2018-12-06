@@ -8,6 +8,10 @@ class UserAuthWechat extends Model
 {
     protected $guarded = [];
     protected $table="user_auth_wechat";
+    /**
+     * @var bool
+     */
+    public $timestamps = false;
 
     /**
      * @param $openId
