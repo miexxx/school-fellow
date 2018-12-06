@@ -2,7 +2,7 @@
 
 @section('content')
 
-    @include('admin::search.system-members')
+    @include('admin::search.system-userSchools')
 
     <div class="row">
         <div class="col-md-12">
@@ -24,6 +24,7 @@
                             <th>专业名称</th>
                             <th>学校名称</th>
                             <th>申请时间</th>
+                            <th>联系方式</th>
                             <th>审核</th>
                         </tr>
                         @foreach($userSchools as $userSchool)
@@ -37,6 +38,7 @@
                                 <td><span class="label label-info">{{$userSchool->major}}</span></td>
                                 <td><span class="label label-info">{{$userSchool->school_name}}</span></td>
                                 <td>{{ $userSchool->created_at }}</td>
+                                <td><span class="label label-danger">{{ $userSchool->user->mobile }}</span></td>
                                 <td>
                                     @if($userSchool->status =="未审核")
                                         <a href="javascript:void(0);" data-id="{{ $userSchool->id }}" class="grid-row-delete btn btn-danger btn-sm" role="button">
