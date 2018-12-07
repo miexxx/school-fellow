@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUserCompanysTable extends Migration
+class CreateResumeWorksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,13 @@ class CreateUserCompanysTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_companys', function (Blueprint $table) {
+        Schema::create('resume_works', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('user_id');
+            $table->unsignedInteger('user_resume_id');
             $table->string('name');
             $table->string('position');
+            $table->string('begin_time');
+            $table->string('leave_reason');
             $table->timestamps();
         });
     }
@@ -29,6 +31,6 @@ class CreateUserCompanysTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_companys');
+        Schema::dropIfExists('resume_works');
     }
 }

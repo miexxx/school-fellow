@@ -33,6 +33,10 @@ class AuthController extends Controller
             // 指定 API 调用返回结果的类型：array(default)/collection/object/raw/自定义类名
             'response_type' => 'array',
 
+//            'log' => [
+//                'level' => 'debug',
+//                'file' => __DIR__.'/wechat.log',
+//            ],
         ];
         $code = request('code');
         $iv = request('iv');
@@ -57,8 +61,8 @@ class AuthController extends Controller
         }
         else{
             $user = $auth->user;
-            User::where('id', $user->id)
-                ->update(['avatarUrl' => $userInfo['avatarUrl']]);
+//            User::where('id', $user->id)
+//                ->update(['avatarUrl' => $userInfo['avatarUrl']]);
             $user->openId->update(['session_key'=>$session['session_key']]);
         }
         $token = auth('api')->login($user);

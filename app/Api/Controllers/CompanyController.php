@@ -9,6 +9,7 @@
 namespace App\Api\Controllers;
 
 
+use App\Api\Resources\CompanyResource;
 use App\Api\Tool\ResultTool;
 use App\Http\Controllers\Controller;
 use App\Models\UserCompany;
@@ -21,13 +22,18 @@ class CompanyController extends Controller
     {
         $this->user = auth('api')->user();
     }
-
+    public function index(){
+        if(!$this->user->userCompany){
+            $date = null;
+            return ResultTool::apiArrayMessage(ResultTool::SUCCESS,'数据为空');
+        }
+        return ResultTool::apiResourcesMessage(ResultTool::SUCCESS,new CompanyResource($this->user->userCompany));
+    }
     public function store(){
         //验证
         $data = [
             'name'=>request('name'),
             'position'=>request('position'),
-            'address'=>request('address'),
         ];
         foreach ($data as $value){
             if(!$value || !request('wechat')){
