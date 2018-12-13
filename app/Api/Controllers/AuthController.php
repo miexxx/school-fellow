@@ -23,11 +23,11 @@ class AuthController extends Controller
     }
     public function login(){
         $config = [
-            'app_id' => 'wx43c66e8ce3d9b082',
-            'secret' => '3b20951f94d556626a1342f3a8e79e63',
+//            'app_id' => 'wx43c66e8ce3d9b082',
+//            'secret' => '3b20951f94d556626a1342f3a8e79e63',
 //
-//            'app_id' => 'wx9bec3d0bf6ecc0d7',
-//            'secret' => '29502aca9d39ff4f6ca15376447b55ed',
+            'app_id' => 'wx9bec3d0bf6ecc0d7',
+            'secret' => '29502aca9d39ff4f6ca15376447b55ed',
 
             // 下面为可选项
             // 指定 API 调用返回结果的类型：array(default)/collection/object/raw/自定义类名
@@ -44,10 +44,11 @@ class AuthController extends Controller
         $app = Factory::miniProgram($config);
         $session = $app->auth->session($code);
         $userInfo = $app->encryptor->decryptData($session['session_key'], $iv, $encryptData);
+        DB::beginTransaction();
         $auth =(new UserAuthWechat())->getByOpenId($userInfo['openId']);
         if(!$auth){
             /// 未注册
-            DB::beginTransaction();
+
             $user = new User();
             $user->avatarUrl = $userInfo['avatarUrl'];
             $user->nickname = $userInfo['nickName'];
@@ -57,7 +58,6 @@ class AuthController extends Controller
 
             $authWechat = new UserAuthWechat(['open_id' => $userInfo['openId'],'session_key'=>$session['session_key']]);
             $user->openId()->save($authWechat);
-            DB::commit();
         }
         else{
             $user = $auth->user;
@@ -65,6 +65,7 @@ class AuthController extends Controller
 //                ->update(['avatarUrl' => $userInfo['avatarUrl']]);
             $user->openId->update(['session_key'=>$session['session_key']]);
         }
+        DB::commit();
         $token = auth('api')->login($user);
         return api()->item($user, UserResource::class)->setMeta($this->respondWithToken($token));
     }

@@ -8,7 +8,7 @@
                 </button>
                 <h4 class="modal-title" id="myModalLabel">筛选</h4>
             </div>
-            <form action="{{ route('admin::userSchools.index') }}" method="get" pjax-container>
+            <form action="{{ route('admin::feedbacks.index') }}" method="get" pjax-container>
                 <div class="modal-body">
                     <div class="form">
                         <div class="form-group">
@@ -19,23 +19,17 @@
                         </div>
                         <div class="form-group">
                             <div class="form-group">
-                                <label>真实名</label>
-                                <input type="text" class="form-control" placeholder="真实名" name="name" value="{{ request('name') }}">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="form-group">
                                 <label>手机号</label>
                                 <input type="text" class="form-control" placeholder="手机号" name="mobile" value="{{ request('mobile') }}">
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="form-group">
-                                <label>审核状态</label>
+                                <label>查看状态</label>
                                 <select name="status" class="form-control">
                                     <option value="" selected></option>
-                                    <option value="0">未审核</option>
-                                    <option value="1">审核通过</option>
+                                    <option value="1">未查看</option>
+                                    <option value="2">已查看</option>
                                 </select>
                             </div>
                         </div>

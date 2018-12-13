@@ -9,6 +9,10 @@ Route::group([
     Route::post('/auth/logout', 'AuthController@logout');
     Route::post('/auth/refresh', 'AuthController@refresh');
 
+    //关于我们&技术支持
+    Route::get('api/about','BaseController@about');
+    Route::get('api/skill','BaseController@skill');
+
     Route::group([
         'middleware'=>['auth:api']
     ],function(){
@@ -27,5 +31,12 @@ Route::group([
         Route::post('api/resume/work','ResumeController@workInfo');
         Route::get('api/resume/work','ResumeController@showWorkInfo');
         Route::get('api/resume/detail','ResumeController@index');
+        //用户提交反馈
+        Route::post('api/feedback','BaseController@feedbackStore');
+        //用户活动管理
+        Route::post('api/action','ActionController@store');
+        Route::get('api/action/{action}','ActionController@show');
+        Route::get('api/action/index/{type}','ActionController@index');
+        Route::post('api/action/join/{action}','ActionController@join');
     });
 });
